@@ -19,7 +19,7 @@ const screenOptions = {
 export default props => {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Index" screenOptions={screenOptions}>
+            <Stack.Navigator initialRouteName="UserList" screenOptions={screenOptions}>
 
                 <Stack.Screen name="UserList" component={UserList}
                 options={ ({navigation}) => {
