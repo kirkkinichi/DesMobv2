@@ -1,12 +1,17 @@
 import React from 'react'
 import {Text, View, FlatList} from 'react-native'
 import users from '../data/users'
-import {ListItem, Avatar, Icon} from 'react-native-elements'
+import {ListItem, Avatar, Button, Icon} from 'react-native-elements'
 
 export default props => {
+
     function getUserItem({ item: user }){
-        return (
-            <ListItem key={user.id} bottomDivider onPress={() => props.navigation.navigate('UserForm')}>
+        return(
+            <ListItem 
+            key={user.id} 
+            bottomDivider 
+            onPress={() => props.navigation.navigate('UserForm', user)}
+            >
             <Avatar source={{uri: user.avatarUrl}} />
             <ListItem.Content>
                 <ListItem.Title>{user.name}</ListItem.Title>
@@ -16,7 +21,7 @@ export default props => {
         )
     }
 
-    return (
+    return(
         <View>
             <FlatList
                 keyExtractor={user => user.id.toString()}      

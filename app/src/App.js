@@ -3,6 +3,7 @@ import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack' 
 import UserList from './views/UserList'
 import UserForm from './views/UserForm'
+import Index from './views/Index'
 import {Button, Icon} from 'react-native-elements'
 
 
@@ -18,7 +19,8 @@ const screenOptions = {
 export default props => {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="UserList" screenOptions={screenOptions}>
+            <Stack.Navigator initialRouteName="Index" screenOptions={screenOptions}>
+
                 <Stack.Screen name="UserList" component={UserList}
                 options={ ({navigation}) => {
                     return {
@@ -33,7 +35,18 @@ export default props => {
                     }
                 }}
                 />
+
                 <Stack.Screen name="UserForm" component={UserForm}/>
+
+                <Stack.Screen name="Index" component={Index}
+                options={ ({navigation}) => {
+                    return {
+                        title: "Página Inicial",
+                        alignItems: 'center'
+                    }
+                }}
+                />
+                
             </Stack.Navigator>
         </NavigationContainer>
     )
