@@ -1,9 +1,23 @@
 import React from 'react'
-import {Text, View, FlatList} from 'react-native'
+import {Text, View, FlatList, Alert} from 'react-native'
 import users from '../data/users'
 import {ListItem, Avatar, Button, Icon} from 'react-native-elements'
 
 export default props => {
+
+    function confirmUserDeletion(user){
+        Alert.alert('Excluir Usuário', 'Deseja realmente Excluir o Usuário?', [
+            {
+                text:'Sim',
+                onPress(){
+
+                }
+            },
+            {
+                text:'Não'
+            }
+        ])
+    }
 
     function getActions(user){
         return(
@@ -14,7 +28,7 @@ export default props => {
                 icon={<Icon name="edit" size={25} color="blue"></Icon>}
             />
             <Button 
-                onPress={()=> props.navigation.navigate('UserForm', user)}
+                onPress={()=> confirmUserDeletion(user)}
                 type="delete"
                 icon={<Icon name="delete" size={25} color="red"></Icon>}
             />

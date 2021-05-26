@@ -1,8 +1,19 @@
-import React from 'react'
-import {Text} from 'react-native'
+import React, { useState } from 'react'
+import {Text, View, TextInput} from 'react-native'
 
-export default props => {
+export default ({route, navigation}) => {
+
+    const [user, setUser] = useState(route.params ? route.params: {})
+
     return (
-        <Text>Formulário Usuários</Text>
+        <View>
+            <Text>Nome: </Text>
+            <TextInput
+                onChangeText={name => setUser({...user, name})}
+                placeholder="Informe o Nome"
+                value={user.name}
+            />
+        </View>
+        
     )
 }
