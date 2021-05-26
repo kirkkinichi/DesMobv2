@@ -5,6 +5,24 @@ import {ListItem, Avatar, Button, Icon} from 'react-native-elements'
 
 export default props => {
 
+    function getActions(user){
+        return(
+            <>
+            <Button 
+                onPress={()=> props.navigation.navigate('UserForm', user)}
+                type="clear"
+                icon={<Icon name="edit" size={25} color="blue"></Icon>}
+            />
+            <Button 
+                onPress={()=> props.navigation.navigate('UserForm', user)}
+                type="delete"
+                icon={<Icon name="delete" size={25} color="red"></Icon>}
+            />
+            </>
+        )
+    }
+
+
     function getUserItem({ item: user }){
         return(
             <ListItem 
@@ -17,6 +35,7 @@ export default props => {
                 <ListItem.Title>{user.name}</ListItem.Title>
                 <ListItem.Subtitle>{user.email}</ListItem.Subtitle>
             </ListItem.Content>
+            {getActions(user)}
             </ListItem>
         )
     }
