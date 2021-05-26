@@ -41,8 +41,7 @@ export default props => {
                 <Stack.Screen name="Index" component={Index}
                 options={ ({navigation}) => {
                     return {
-                        title: "Página Inicial",
-                        alignItems: 'center'
+                        title: "Página Inicial"
                     }
                 }}
                 />
