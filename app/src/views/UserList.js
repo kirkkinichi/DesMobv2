@@ -6,7 +6,7 @@ import {ListItem, Avatar, Icon} from 'react-native-elements'
 export default props => {
     function getUserItem({ item: user }){
         return (
-            <ListItem key={user.id} bottomDivider>
+            <ListItem key={user.id} bottomDivider onPress={() => props.navigation.navigate('UserForm')}>
             <Avatar source={{uri: user.avatarUrl}} />
             <ListItem.Content>
                 <ListItem.Title>{user.name}</ListItem.Title>
