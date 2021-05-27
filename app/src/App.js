@@ -37,7 +37,13 @@ export default props => {
                         }
                     }}
                     />
-                    <Stack.Screen name="UserForm" component={UserForm}/>
+                    <Stack.Screen name="UserForm" component={UserForm}
+                    options={ ({navigation}) => {
+                        return {
+                            title: "Formulário de Usuário"
+                        }
+                    }}
+                    />   
                     <Stack.Screen name="Index" component={Index}
                     options={ ({navigation}) => {
                         return {
