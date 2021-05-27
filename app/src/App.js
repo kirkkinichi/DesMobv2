@@ -4,6 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack'
 import UserList from './views/UserList'
 import UserForm from './views/UserForm'
 import Index from './views/Index'
+import Register from './views/Register'
 import {Button, Icon} from 'react-native-elements'
 import { UsersProvider } from './context/UsersContext'
 
@@ -43,7 +44,14 @@ export default props => {
                             title: "Página Inicial"
                         }
                     }}
-                    />                
+                    />   
+                    <Stack.Screen name="Register" component={Register}
+                    options={ ({navigation}) => {
+                        return {
+                            title: "Crie uma Conta"
+                        }
+                    }}
+                    />               
                 </Stack.Navigator>
             </NavigationContainer>              
         </UsersProvider>

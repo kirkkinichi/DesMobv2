@@ -35,7 +35,7 @@ export default props => {
 
                 <TouchableOpacity 
                     style={styles.btnAcessar}
-                    
+                    onPress={()=> props.navigation.navigate('Register')}
                 >
                     <Text style={styles.textAcessar}>Criar uma conta</Text>
                 </TouchableOpacity>
