@@ -13,21 +13,30 @@ export default props => {
 
             <View style={styles.container}>
                 <TextInput
+                    label="Email"
+                    keyboardType="email-address"
                     style={styles.input}
                     placeholder="Email"
                     autoCorrect={false}
                 />
                 <TextInput 
+                    label="Senha"
                     style={styles.input}
                     placeholder="Senha"
                     autoCorrect={false}
                     secureTextEntry={true}
                 />
-                <TouchableOpacity style={styles.btnAcessar}>
+                <TouchableOpacity 
+                    style={styles.btnAcessar}
+                    onPress={()=> props.navigation.navigate('UserList')}
+                >
                     <Text style={styles.textAcessar}>Acessar</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.btnAcessar}>
+                <TouchableOpacity 
+                    style={styles.btnAcessar}
+                    
+                >
                     <Text style={styles.textAcessar}>Criar uma conta</Text>
                 </TouchableOpacity>
             </View>

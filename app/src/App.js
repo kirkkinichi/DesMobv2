@@ -21,7 +21,7 @@ export default props => {
     return (
         <UsersProvider>
             <NavigationContainer independent={true}>
-                <Stack.Navigator initialRouteName="UserList" screenOptions={screenOptions}>
+                <Stack.Navigator initialRouteName="Index" screenOptions={screenOptions}>
                     <Stack.Screen name="UserList" component={UserList}
                     options={ ({navigation}) => {
                         return {
