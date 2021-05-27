@@ -20,7 +20,7 @@ const screenOptions = {
 export default props => {
     return (
         <UsersProvider>
-            <NavigationContainer>
+            <NavigationContainer independent={true}>
                 <Stack.Navigator initialRouteName="UserList" screenOptions={screenOptions}>
                     <Stack.Screen name="UserList" component={UserList}
                     options={ ({navigation}) => {
