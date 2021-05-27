@@ -5,13 +5,17 @@ import UsersContext from '../context/UsersContext'
 
 export default props => {
 
-    const {state} = useContext(UsersContext)
+    const {state, dispatch} = useContext(UsersContext)
 
     function confirmUserDeletion(user){
         Alert.alert('Excluir Usuário', 'Deseja realmente Excluir o Usuário?', [
             {
                 text:'Sim',
                 onPress(){
+                    dispatch({
+                        type: 'deleteUser',
+                        payload: user,
+                    })
                     console.warn('O Usuário: ' + user.name + ' foi deletado.')
                 }
             },
