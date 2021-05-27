@@ -10,7 +10,7 @@ export default props => {
             {
                 text:'Sim',
                 onPress(){
-
+                    console.warn('O Usuário: ' + user.name + ' foi deletado.')
                 }
             },
             {
