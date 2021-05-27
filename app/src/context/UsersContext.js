@@ -18,6 +18,13 @@ const actions = {
             ...state,
             users: [...state.users, user]
         }
+    },
+    updateUser(state, action){
+        const user = action.payload
+        return{
+            ...state,
+            users: state.users.map(x => x.id === user.id ? user:x)
+        }
     }
 }
 
