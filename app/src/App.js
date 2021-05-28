@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack' 
 import UserList from './views/UserList'
@@ -7,6 +7,7 @@ import Index from './views/Index'
 import Register from './views/Register'
 import {Button, Icon} from 'react-native-elements'
 import { UsersProvider } from './context/UsersContext'
+import OneSignal from 'react-native-onesignal';
 
 
 const Stack = createStackNavigator()
@@ -19,6 +20,20 @@ const screenOptions = {
 }
 
 export default props => {
+
+    function onOpened(result){
+        console.log('Mensagem: ', result.notification.payload.body);
+        console.log('Result: ', result);
+    }
+
+    useEffect(()=>{
+        OneSignal.init('bba52c2e-1b0e-49d0-bd1b-833aa550c9ba');
+        OneSignal.addEventListener('opened', onOpened);
+
+        return() => OneSignal.removeEventListener('opened', onOpened);
+
+    },[]);
+
     return (
         <UsersProvider>
             <NavigationContainer independent={true}>
