@@ -7,6 +7,7 @@ import UserForm from './views/UserForm'
 import SignOut from './views/SignOut'
 import Index from './views/Index'
 import Register from './views/Register'
+import Menu from './views/Menu'
 import PreLoad from './views/PreLoad'
 import {Button, Icon} from 'react-native-elements'
 import MainContextProvider from '../src/context/MainContext'
@@ -46,7 +47,7 @@ export default props => {
                     <Stack.Screen name="UserList" component={UserList}
                     options={ ({navigation}) => {
                         return {
-                            title: "Lista de Usuários",
+                            title: "Lista de Funcionários",
                             headerRight: () => (
                                 <Button
                                     onPress={ () => navigation.navigate("UserForm")} 
@@ -60,9 +61,17 @@ export default props => {
                     <Stack.Screen name="UserForm" component={UserForm}
                     options={ ({navigation}) => {
                         return {
-                            title: "Formulário de Usuário"
+                            title: "Cadastrar um Funcionário"
                         }
                     }}
+                    />   
+                    <Stack.Screen name="Menu" component={Menu}
+                    options={ ({navigation}) => {
+                        return {
+                            title: "Menu"
+                        }
+                    }}
+                    options={{headerShown: false}}
                     />   
                     <Stack.Screen name="Index" component={Index}
                     options={ ({navigation}) => {

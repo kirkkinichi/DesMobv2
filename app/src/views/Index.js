@@ -67,8 +67,8 @@ export default props => {
                 />
                 <TouchableOpacity 
                     style={styles.btnAcessar}
-                    onPress={()=> props.navigation.navigate('UserList')}
-                    onPress={handleSignClick}
+                    onPress={()=> props.navigation.navigate('Menu')}
+                    // onPress={handleSignClick}
                 >
                     <Text style={styles.textAcessar}>Acessar</Text>
                 </TouchableOpacity>
