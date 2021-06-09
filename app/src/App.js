@@ -4,8 +4,10 @@ import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack' 
 import UserList from './views/UserList'
 import UserForm from './views/UserForm'
+import SignOut from './views/SignOut'
 import Index from './views/Index'
 import Register from './views/Register'
+import PreLoad from './views/PreLoad'
 import {Button, Icon} from 'react-native-elements'
 import { UsersProvider } from './context/UsersContext'
 import OneSignal from 'react-native-onesignal';
@@ -38,7 +40,7 @@ export default props => {
     return (
         <UsersProvider>
             <NavigationContainer independent={true}>
-                <Stack.Navigator initialRouteName="Index" screenOptions={screenOptions}>
+                <Stack.Navigator initialRouteName="PreLoad" screenOptions={screenOptions}>
                     <Stack.Screen name="UserList" component={UserList}
                     options={ ({navigation}) => {
                         return {
@@ -65,7 +67,8 @@ export default props => {
                         return {
                             title: "Página Inicial"
                         }
-                    }}
+                    }} 
+                    options={{headerShown: false}}
                     />   
                     <Stack.Screen name="Register" component={Register}
                     options={ ({navigation}) => {
@@ -73,7 +76,22 @@ export default props => {
                             title: "Crie uma Conta"
                         }
                     }}
-                    />               
+                    />      
+                    <Stack.Screen name="SignOut" component={SignOut} 
+                    options={ ({navigation}) => {
+                        return {
+                            title: "SignOut"
+                        }
+                    }}
+                    />            
+                    <Stack.Screen name="PreLoad" component={PreLoad}
+                    options={ ({navigation}) => {
+                        return {
+                            title: "PreLoad"
+                        }
+                    }}
+                    options={{headerShown: false}}
+                    />            
                 </Stack.Navigator>
             </NavigationContainer>              
         </UsersProvider>
