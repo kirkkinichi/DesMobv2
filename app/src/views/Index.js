@@ -1,7 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Text, View, KeyboardAvoidingView, Image, StyleSheet, TextInput, TouchableOpacity} from 'react-native'
 
 export default props => {
+
+    const [emailField, setEmailField] = useState('');
+    const [passwordField, setPasswordField] = useState('');
+
     return (
         <KeyboardAvoidingView style={styles.background}>
             <View style={styles.logo}>
@@ -18,6 +22,8 @@ export default props => {
                     style={styles.input}
                     placeholder="Email"
                     autoCorrect={false}
+                    value={emailField}
+                    onChangeText={t=>setEmailField(t)}
                 />
                 <TextInput 
                     label="Senha"
@@ -25,6 +31,8 @@ export default props => {
                     placeholder="Senha"
                     autoCorrect={false}
                     secureTextEntry={true}
+                    value={passwordField}
+                    onChangeText={t=>setPasswordField(t)}
                 />
                 <TouchableOpacity 
                     style={styles.btnAcessar}

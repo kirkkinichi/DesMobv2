@@ -1,68 +1,104 @@
-import React, { useContext, useState } from 'react'
-import {Text, View, TextInput, StyleSheet, Button} from 'react-native'
-import UsersContext from '../context/UsersContext'
+import React, {useState} from 'react'
+import {Text, View, KeyboardAvoidingView, Image, StyleSheet, TextInput, TouchableOpacity} from 'react-native'
 
-export default ({route, navigation}) => {
+export default props => {
 
-    const {dispatch} = useContext(UsersContext)
-    const [user, setUser] = useState(route.params ? route.params: {})
+    const [nameField, setNameField] = useState('');
+    const [emailField, setEmailField] = useState('');
+    const [passwordField, setPasswordField] = useState('');
 
     return (
-        <View style={style.form}>
-            <Text>Nome completo:</Text>
-            <TextInput
-                style={style.input}
-                onChangeText={name => setUser({...user, name})}
-                placeholder="Insira o Nome completo"
-                value={user.name}
-            />
-            <Text>Email:</Text>
-            <TextInput
-                style={style.input}
-                onChangeText={email => setUser({...user, email})}
-                placeholder="Informe o Email"
-                value={user.email}
-            />
-            <Text>Senha:</Text>
-            <TextInput
-                style={style.input}
-                onChangeText={password => setUser({...user, password})}
-                placeholder="Insira uma Senha"
-                value={user.password}
-                autoCorrect={false}
-                secureTextEntry={true}
-            />
-            <Text>Url para imagem de perfil:</Text>
-            <TextInput
-                style={style.input}
-                onChangeText={avatarUrl => setUser({...user, avatarUrl})}
-                placeholder="Informe a Url da imagem"
-                value={user.avatarUrl}
-            />
-            <Button
-                title="Criar"
-                onPress={() => {
-                    dispatch({
-                        type: user.id ? 'updateUser' : 'createUser',
-                        payload: user
-                    })
-                    navigation.goBack()
-                    console.warn('Usuário cadastrado com sucesso.')
-                }}
-            />
-        </View>        
-    )    
+        <KeyboardAvoidingView style={styles.background}>
+            <View style={styles.logo}>
+                <Image
+                    style={{width: 150, height: 150}}
+                    source={{uri: 'https://cdn.pixabay.com/photo/2014/04/03/00/41/house-309113_960_720.png'}}
+                />
+            </View>
+
+            <View>
+                <Text style={styles.text}>Consultor de Funcionários</Text>
+            </View>
+
+            <View style={styles.container}>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Digite seu nome"
+                    autoCorrect={false}
+                    value={nameField}
+                    onChangeText={t=>setNameField(t)}
+                />
+                <TextInput
+                    label="Email"
+                    keyboardType="email-address"
+                    style={styles.input}
+                    placeholder="Email"
+                    autoCorrect={false}
+                    value={emailField}
+                    onChangeText={t=>setEmailField(t)}
+                />
+                <TextInput 
+                    label="Senha"
+                    style={styles.input}
+                    placeholder="Senha"
+                    autoCorrect={false}
+                    secureTextEntry={true}
+                    value={passwordField}
+                    onChangeText={t=>setPasswordField(t)}
+                />
+
+                <TouchableOpacity style={styles.btnAcessar} onPress={()=> props.navigation.navigate('Index')}>
+                    <Text style={styles.textAcessar}>Criar Conta</Text>
+                </TouchableOpacity>
+            </View>
+        </KeyboardAvoidingView>
+    )
 }
 
-const style = StyleSheet.create({
-    form: {
-        padding: 15,
+const styles = StyleSheet.create({
+    background: {
+        flex:1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor:'#FFF'
+    },
+    logo: {
+        flex: 1,
+        justifyContent:'center'
+    },
+    container: {
+        flex:1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+        paddingBottom: 60
     },
     input: {
-        height: 40,
+        height: 50,
         borderColor: 'gray',
+        borderRadius: 8,
         borderWidth: 1,
-        marginBottom: 10,
-        marginTop: 10,
+        marginBottom: 20,
+        width:'90%',
+        padding: 10,
+        backgroundColor: '#FFF'
+    },
+    btnAcessar: {
+        width:'90%',
+        height: 45,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor:'#2b2a2a',
+        marginTop: 20,
+        borderRadius: 8
+    },
+    text: {
+        color: 'black',
+        fontSize: 30
+    },
+    textAcessar: {
+        color: '#FFF',
+        fontSize: 20
     }
-})
+});

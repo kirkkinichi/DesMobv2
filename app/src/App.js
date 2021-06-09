@@ -9,6 +9,7 @@ import Index from './views/Index'
 import Register from './views/Register'
 import PreLoad from './views/PreLoad'
 import {Button, Icon} from 'react-native-elements'
+import MainContextProvider from '../src/context/MainContext'
 import { UsersProvider } from './context/UsersContext'
 import OneSignal from 'react-native-onesignal';
 
@@ -38,6 +39,7 @@ export default props => {
     },[]);
 
     return (
+        <MainContextProvider>
         <UsersProvider>
             <NavigationContainer independent={true}>
                 <Stack.Navigator initialRouteName="PreLoad" screenOptions={screenOptions}>
@@ -95,5 +97,6 @@ export default props => {
                 </Stack.Navigator>
             </NavigationContainer>              
         </UsersProvider>
+        </MainContextProvider>
     )
 }
