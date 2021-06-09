@@ -1,11 +1,42 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import {Text, View, KeyboardAvoidingView, Image, StyleSheet, TextInput, TouchableOpacity} from 'react-native'
+import Api from '../Api'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { MainContext } from '../context/MainContext'
+import {useNavigation} from '@react-navigation/native'
 
 export default props => {
 
+    const {dispatch: userDispatch} = useContext(MainContext);
+    const navigation = useNavigation();
     const [nameField, setNameField] = useState('');
     const [emailField, setEmailField] = useState('');
     const [passwordField, setPasswordField] = useState('');
+
+    const handleSignClick = async () => {
+        if(nameField != '' && emailField != '' && passwordField != ''){            
+            let res = await Api.signUp(nameField, emailField, passwordField);
+            if(res.token){
+                await AsyncStorage.setItem('token', res.token);
+                userDispatch({
+                    type: 'setAvatar',
+                    payload: {
+                        avatar: res.data.avatar
+                    }
+                });                
+
+                navigation.reset({
+                    routes: [{name:'MainTab'}]
+                });
+            }
+            else {
+                alert("Erro: " + res.error);
+            }
+        }
+        else {
+            alert("Preencha todos os campos");
+        }
+    }
 
     return (
         <KeyboardAvoidingView style={styles.background}>
@@ -47,7 +78,7 @@ export default props => {
                     onChangeText={t=>setPasswordField(t)}
                 />
 
-                <TouchableOpacity style={styles.btnAcessar} onPress={()=> props.navigation.navigate('Index')}>
+                <TouchableOpacity style={styles.btnAcessar} onPress={()=> props.navigation.navigate('Index')} onPress={handleSignClick}>
                     <Text style={styles.textAcessar}>Criar Conta</Text>
                 </TouchableOpacity>
             </View>
