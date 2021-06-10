@@ -5,6 +5,7 @@ import {createStackNavigator} from '@react-navigation/stack'
 import UserList from './views/UserList'
 import UserForm from './views/UserForm'
 import SignOut from './views/SignOut'
+import Procurar from './views/Procurar'
 import Index from './views/Index'
 import Register from './views/Register'
 import Menu from './views/Menu'
@@ -62,6 +63,13 @@ export default props => {
                     options={ ({navigation}) => {
                         return {
                             title: "Cadastrar um Funcionário"
+                        }
+                    }}
+                    />   
+                    <Stack.Screen name="Procurar" component={Procurar}
+                    options={ ({navigation}) => {
+                        return {
+                            title: ""
                         }
                     }}
                     />   

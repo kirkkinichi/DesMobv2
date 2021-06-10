@@ -23,7 +23,7 @@ export default props => {
                 <TouchableOpacity style={styles.btnAcessar} onPress={()=> props.navigation.navigate('UserForm')}>
                     <Text style={styles.textAcessar}>Cadastrar Funcionários</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.btnAcessar} onPress={()=> props.navigation.navigate('')}>
+                <TouchableOpacity style={styles.btnAcessar} onPress={()=> props.navigation.navigate('Procurar')}>
                     <Text style={styles.textAcessar}>Procurar por um Funcionário</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.btnAcessar} onPress={()=> props.navigation.navigate('')}>
