@@ -51,17 +51,17 @@ const styles = StyleSheet.create({
     },
     textAcessar: {
         color: '#FFF',
-        fontSize: 25,
+        fontSize: 15,
         padding: 10
     },
     text: {
         color: '#2b2a2a',
-        fontSize: 20,
+        fontSize: 15,
         paddingBottom: 10
     },
     title: {
         color: '#2b2a2a',
-        fontSize: 20,
+        fontSize: 15,
         fontWeight: 'bold',
         paddingBottom: 5
     }

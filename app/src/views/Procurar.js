@@ -30,17 +30,13 @@ export default props => {
             <Text style={styles.title}>Procure por um Funcionário / Profissão </Text>
             <TextInput
                 style={styles.input}
-                placeholder="Digite o nome do funcionário ou sua profissão"
+                placeholder="Digite o nome do funcionário ou sua profissão"                
             />
-            <TouchableOpacity style={styles.btnAcessar} onPress={()=> props.navigation.navigate('')}>
-                <Text style={styles.textAcessar}>Procurar</Text>
-            </TouchableOpacity>
-
             <FlatList
             keyExtractor={user => user.id.toString()}      
             data={state.users}
             renderItem={getUserItem}
-                />
+            />
         </View>
     )
 }
