@@ -38,7 +38,7 @@ export default ({route, navigation}) => {
                         payload: user
                     })
                     navigation.goBack()
-                    console.warn('Usuário salvo com sucesso.')
+                    console.warn('Funcionário salvo com sucesso.')
                 }}
             />
         </View>        
