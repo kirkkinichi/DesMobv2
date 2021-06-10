@@ -23,6 +23,27 @@ export default ({route, navigation}) => {
                 placeholder="Informe o Email"
                 value={user.email}
             />
+            <Text>Profissão:</Text>
+            <TextInput
+                style={style.input}
+                onChangeText={profissao => setUser({...user, profissao})}
+                placeholder="Informe a Profissão do Funcionário"
+                value={user.profissao}
+            />
+            <Text>Estado:</Text>
+            <TextInput
+                style={style.input}
+                onChangeText={profissao => setUser({...user, profissao})}
+                placeholder="Informe o Estado"
+                value={user.profissao}
+            />
+            <Text>Cidade:</Text>
+            <TextInput
+                style={style.input}
+                onChangeText={profissao => setUser({...user, profissao})}
+                placeholder="Informe a Cidade"
+                value={user.profissao}
+            />
             <Text>Url para imagem de perfil:</Text>
             <TextInput
                 style={style.input}

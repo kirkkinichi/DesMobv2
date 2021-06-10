@@ -1,70 +1,79 @@
 import React, {useState, useContext} from 'react'
-import {Text, View, KeyboardAvoidingView, Image, StyleSheet, TextInput, TouchableOpacity} from 'react-native'
+import {Text, View, KeyboardAvoidingView, StyleSheet, TextInput, TouchableOpacity, FlatList} from 'react-native'
+import {ListItem, Avatar} from 'react-native-elements'
 import UsersContext from '../context/UsersContext'
 
 export default props => {
 
-    return (
-        <KeyboardAvoidingView style={styles.background}>            
-            <View>
-                <Text style={styles.text}>Procure por um Funcionário / Profissão </Text>
-            </View>
+    const {state, dispatch} = useContext(UsersContext)
 
-            <View style={styles.container}>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Digite o nome do funcionário ou sua profissão"
+    function getUserItem({ item: user }){
+        return(
+            <ListItem
+            key={user.id} 
+            bottomDivider 
+            onPress={() => props.navigation.navigate('UserForm', user)}
+            >
+            <Avatar source={{uri: user.avatarUrl}} />
+            <ListItem.Content>
+                <ListItem.Title>{user.name}</ListItem.Title>
+                <ListItem.Subtitle>{user.estado} - {user.cidade}</ListItem.Subtitle>
+                <ListItem.Subtitle>{user.profissao}</ListItem.Subtitle>
+                <ListItem.Subtitle>{user.email}</ListItem.Subtitle>
+            </ListItem.Content>
+            </ListItem>
+        )
+    }        
+
+    return (      
+        <View>
+            <Text style={styles.title}>Procure por um Funcionário / Profissão </Text>
+            <TextInput
+                style={styles.input}
+                placeholder="Digite o nome do funcionário ou sua profissão"
+            />
+            <TouchableOpacity style={styles.btnAcessar} onPress={()=> props.navigation.navigate('')}>
+                <Text style={styles.textAcessar}>Procurar</Text>
+            </TouchableOpacity>
+
+            <FlatList
+            keyExtractor={user => user.id.toString()}      
+            data={state.users}
+            renderItem={getUserItem}
                 />
-                <TouchableOpacity style={styles.btnAcessar} onPress={()=> props.navigation.navigate('Index')}>
-                    <Text style={styles.textAcessar}>Procurar</Text>
-                </TouchableOpacity>
-            </View>
-        </KeyboardAvoidingView>
+        </View>
     )
 }
 
-const styles = StyleSheet.create({
-    background: {
-        flex:1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor:'#FFF'
-    },
-    logo: {
-        flex: 1,
-        justifyContent:'center'
-    },
-    container: {
-        flex:1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '100%',
-        paddingBottom: 60
-    },
+const styles = StyleSheet.create({  
+    
     input: {
         height: 50,
         borderColor: 'gray',
         borderRadius: 8,
         borderWidth: 1,
         marginBottom: 20,
-        width:'90%',
+        width:'100%',
         padding: 10,
-        backgroundColor: '#FFF'
+        backgroundColor: '#FFF',
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     btnAcessar: {
-        width:'90%',
+        width:'100%',
         height: 45,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor:'#2b2a2a',
         marginTop: 20,
-        borderRadius: 8
+        marginBottom: 10
     },
-    text: {
+    title: {
         color: 'black',
         fontSize: 30,
-        paddingTop: 20
+        padding: 20,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     textAcessar: {
         color: '#FFF',

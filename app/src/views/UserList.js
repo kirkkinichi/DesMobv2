@@ -53,6 +53,8 @@ export default props => {
             <Avatar source={{uri: user.avatarUrl}} />
             <ListItem.Content>
                 <ListItem.Title>{user.name}</ListItem.Title>
+                <ListItem.Subtitle>{user.estado} - {user.cidade}</ListItem.Subtitle>
+                <ListItem.Subtitle>{user.profissao}</ListItem.Subtitle>
                 <ListItem.Subtitle>{user.email}</ListItem.Subtitle>
             </ListItem.Content>
             {getActions(user)}
