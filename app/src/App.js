@@ -8,6 +8,7 @@ import SignOut from './views/SignOut'
 import Procurar from './views/Procurar'
 import Index from './views/Index'
 import Register from './views/Register'
+import Profile from './views/Profile'
 import Menu from './views/Menu'
 import PreLoad from './views/PreLoad'
 import {Button, Icon} from 'react-native-elements'
@@ -70,6 +71,13 @@ export default props => {
                     options={ ({navigation}) => {
                         return {
                             title: ""
+                        }
+                    }}
+                    />   
+                    <Stack.Screen name="Profile" component={Profile}
+                    options={ ({navigation}) => {
+                        return {
+                            title: "Informações do Funcionário"
                         }
                     }}
                     />   

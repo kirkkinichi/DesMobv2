@@ -33,16 +33,16 @@ export default ({route, navigation}) => {
             <Text>Estado:</Text>
             <TextInput
                 style={style.input}
-                onChangeText={profissao => setUser({...user, profissao})}
+                onChangeText={estado => setUser({...user, estado})}
                 placeholder="Informe o Estado"
-                value={user.profissao}
+                value={user.estado}
             />
             <Text>Cidade:</Text>
             <TextInput
                 style={style.input}
-                onChangeText={profissao => setUser({...user, profissao})}
+                onChangeText={cidade => setUser({...user, cidade})}
                 placeholder="Informe a Cidade"
-                value={user.profissao}
+                value={user.cidade}
             />
             <Text>Url para imagem de perfil:</Text>
             <TextInput
