@@ -45,7 +45,9 @@ export default props => {
                     source={{uri: 'https://cdn.pixabay.com/photo/2014/04/03/00/41/house-309113_960_720.png'}}
                 />
             </View>
-
+            <View style={styles.container}>
+                <Text style={styles.title}>Consultor de Funcionários</Text>
+            </View>
             <View style={styles.container}>
                 <TextInput
                     label="Email"
@@ -125,6 +127,10 @@ const styles = StyleSheet.create({
     textAcessar: {
         color: '#FFF',
         fontSize: 25
+    },
+    title: {
+        color: '#2b2a2a',
+        fontSize: 40
     }
 });
     

@@ -16,12 +16,12 @@ export default props => {
                 <Text style={styles.text}>Menu</Text>
             </View>
 
-            <View style={styles.container}>
-                <TouchableOpacity style={styles.btnAcessar} onPress={()=> props.navigation.navigate('UserList')}>
-                    <Text style={styles.textAcessar}>Visualizar Funcionários</Text>
-                </TouchableOpacity>
+            <View style={styles.container}>                
                 <TouchableOpacity style={styles.btnAcessar} onPress={()=> props.navigation.navigate('UserForm')}>
                     <Text style={styles.textAcessar}>Cadastrar Funcionários</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.btnAcessar} onPress={()=> props.navigation.navigate('UserList')}>
+                    <Text style={styles.textAcessar}>Editar Funcionários</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.btnAcessar} onPress={()=> props.navigation.navigate('Procurar')}>
                     <Text style={styles.textAcessar}>Procurar por um Funcionário</Text>
