@@ -41,8 +41,8 @@ export default props => {
         <KeyboardAvoidingView style={styles.background}>
             <View style={styles.logo}>
                 <Image
-                    style={{width: 200, height: 200}}
-                    source={{uri: 'https://cdn.pixabay.com/photo/2014/04/03/00/41/house-309113_960_720.png'}}
+                    style={{width: 400, height: 200}}
+                    source={{uri: 'https://cdn.pixabay.com/photo/2015/07/20/19/07/hand-853188_960_720.png'}}
                 />
             </View>
 
